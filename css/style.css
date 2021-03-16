@@ -23,31 +23,55 @@ img {
   max-width: 100%;
   height: auto;
   transform-origin: top left;
-}
-
-#app {
-  grid-column: 2 / -2;
-}
-
-.gallery ol {
-  margin-block: clamp(2rem, 6vw, 6rem);
-  display: grid;
-  grid: auto-flow dense / repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
-  align-items: start;
-  gap: 2rem;
-}
-
-.gallery li {
-  position: relative;
-}
-
-.gallery img {
   border-radius: 16px;
   background: hsl(240 50% 99%);
   box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%), 0 2px 4px 0 rgb(0 0 0 / 10%);
 }
 
-.caption {
+#app {
+  grid-column: 2 / -2;
+  margin-block: clamp(2rem, 6vw, 6rem);
+  display: grid;
+  gap: 4rem 1rem;
+}
+
+section {
+  display: flex;
+  flex-flow: wrap;
+  gap: 1.5rem;
+  border: 2px dashed #fb28a8;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+section header {
+  flex: 0 1 250px;
+}
+
+section ol {
+  flex: 1 0 60%;
+}
+
+.gallery {
+  /* display: grid;
+  grid: auto-flow dense / repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); */
+  align-items: start;
+  display: flex;
+  flex-flow: wrap;
+  gap: 2rem;
+}
+
+.gallery li {
+  position: relative;
+  flex: 1 1 20rem;
+}
+
+.gallery-image:not(.detail *) img {
+  max-block-size: 300px;
+  overflow: hidden;
+}
+
+figcaption {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -75,7 +99,6 @@ img {
   position: absolute;
   inset-block-start: 0;
   inset-inline-start: 0;
-  z-index: 1;
   transform: translate(-25%, -25%);
   background: #72f1b8;
   color: #3a243f;
@@ -118,7 +141,7 @@ img {
   max-height: 100%;
 }
 
-.detail .caption {
+.detail figcaption {
   opacity: 1;
 }
 
