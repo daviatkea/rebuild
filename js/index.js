@@ -30,7 +30,7 @@ function flipImages(firstEl, lastEl, change) {
       },
     ],
     {
-      duration: 400, // milliseconds
+      duration: 600, // milliseconds
       easing: "cubic-bezier(0.84, 0, 0.2, 1)",
     }
   );
