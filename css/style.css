@@ -29,6 +29,10 @@ img {
   box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%), 0 2px 4px 0 rgb(0 0 0 / 10%);
 }
 
+p + p {
+  margin-block-start: 1rem;
+}
+
 #app {
   grid-column: 2 / -2;
   margin-block: clamp(2rem, 6vw, 6rem);
@@ -99,8 +103,17 @@ figcaption {
   right: 0;
   color: #fff; */
   color: #202020;
-  background: #fff;
-  padding: 2rem;
+  background: linear-gradient(#fff, #fff) padding-box,
+    repeating-linear-gradient(-45deg, #5000ca3e 0 2px, transparent 0 8px)
+      border-box,
+    repeating-linear-gradient(45deg, #fb28a83e 0 2px, transparent 0 8px)
+      border-box,
+    #fff;
+  /* background: linear-gradient(#fff, #fff) padding-box,
+    repeating-conic-gradient(gainsboro 0 0.25turn, #fff 0 0.5turn) border-box 0
+      0 / 2rem 2rem round; */
+  padding: 1rem;
+  border: 2rem solid transparent;
   text-align: start;
   transition: opacity 0.4s linear;
   opacity: 0;
@@ -115,6 +128,11 @@ figcaption {
   figcaption {
     margin: 2rem 2rem -2rem -2rem;
     font-size: 1.25rem;
+  }
+
+  figcaption h3 {
+    font-size: 3rem;
+    line-height: 1.25;
   }
 }
 
