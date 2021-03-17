@@ -125,6 +125,11 @@ figcaption > :is(p, h4) + :not(ul) {
   margin-block-start: 1rem;
 }
 
+figcaption ul {
+  list-style-type: "🧩 ";
+  padding-inline-start: 1.2rem;
+}
+
 @media (min-width: 1140px) {
   figcaption {
     margin: 2rem 2rem -2rem -2rem;
