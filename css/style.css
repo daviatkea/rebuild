@@ -202,6 +202,7 @@ figcaption {
   max-inline-size: 100%;
   max-block-size: 70vh;
   object-fit: contain;
+  cursor: zoom-out;
 }
 
 .detail figcaption {
