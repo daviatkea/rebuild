@@ -3,6 +3,7 @@ console.clear();
 const elApp = document.querySelector("#app");
 
 const elImages = Array.from(document.querySelectorAll(".gallery-image"));
+const elVideos = Array.from(document.querySelectorAll(".gallery-video"));
 
 const elDetail = document.querySelector(".detail");
 
@@ -40,28 +41,88 @@ function flipImages(firstEl, lastEl, change) {
   };
 }
 
-elImages.forEach((figure) => {
-  figure.addEventListener("click", () => {
-    const elImage = figure.querySelector("img");
+handler(elImages, "img");
+handler(elVideos, "video");
 
-    elDetail.innerHTML = "";
+function handler(elems, type) {
+  elems.forEach((el) => {
+    el.addEventListener("click", () => {
+      const elImage = el.querySelector(type);
 
-    const elClone = figure.cloneNode(true);
-    elDetail.appendChild(elClone);
+      elDetail.innerHTML = "";
 
-    const elCloneImage = elClone.querySelector("img");
+      const elClone = el.cloneNode(true);
+      elDetail.appendChild(elClone);
 
-    flipImages(elImage, elCloneImage, () => {
-      elApp.dataset.state = "detail";
-    });
+      const elCloneImage = elClone.querySelector(type);
 
-    function revert() {
-      flipImages(elCloneImage, elImage, () => {
-        elApp.dataset.state = "gallery";
-        elCloneImage.removeEventListener("click", revert);
+      flipImages(elImage, elCloneImage, () => {
+        elApp.dataset.state = "detail";
       });
-    }
 
-    elCloneImage.addEventListener("click", revert);
+      elCloneImage.play();
+
+      function revert() {
+        elCloneImage.pause();
+        flipImages(elCloneImage, elImage, () => {
+          elApp.dataset.state = "gallery";
+          elCloneImage.removeEventListener("click", revert);
+        });
+      }
+
+      elCloneImage.addEventListener("click", revert);
+    });
   });
-});
+}
+
+// elImages.forEach((figure) => {
+//   figure.addEventListener("click", () => {
+//     const elImage = figure.querySelector("img");
+
+//     elDetail.innerHTML = "";
+
+//     const elClone = figure.cloneNode(true);
+//     elDetail.appendChild(elClone);
+
+//     const elCloneImage = elClone.querySelector("img");
+
+//     flipImages(elImage, elCloneImage, () => {
+//       elApp.dataset.state = "detail";
+//     });
+
+//     function revert() {
+//       flipImages(elCloneImage, elImage, () => {
+//         elApp.dataset.state = "gallery";
+//         elCloneImage.removeEventListener("click", revert);
+//       });
+//     }
+
+//     elCloneImage.addEventListener("click", revert);
+//   });
+// });
+
+// elVideos.forEach((figure) => {
+//   figure.addEventListener("click", () => {
+//     const elImage = figure.querySelector("video");
+
+//     elDetail.innerHTML = "";
+
+//     const elClone = figure.cloneNode(true);
+//     elDetail.appendChild(elClone);
+
+//     const elCloneImage = elClone.querySelector("video");
+
+//     flipImages(elImage, elCloneImage, () => {
+//       elApp.dataset.state = "detail";
+//     });
+
+//     function revert() {
+//       flipImages(elCloneImage, elImage, () => {
+//         elApp.dataset.state = "gallery";
+//         elCloneImage.removeEventListener("click", revert);
+//       });
+//     }
+
+//     elCloneImage.addEventListener("click", revert);
+//   });
+// });

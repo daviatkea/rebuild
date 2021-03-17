@@ -20,7 +20,7 @@ body {
     );
 }
 
-img {
+:is(img, video) {
   max-width: 100%;
   height: auto;
   transform-origin: top left;
@@ -70,11 +70,10 @@ section ol {
 .gallery li {
   position: relative;
   flex: 0 1 250px;
-
   display: list-item;
 }
 
-.gallery-image {
+:is(.gallery-image, .gallery-video) {
   will-change: transform;
   block-size: 0;
   display: grid;
@@ -82,12 +81,13 @@ section ol {
   padding-top: 80%;
 }
 
-.gallery-image:not(.detail > *) img {
+:is(.gallery-image, .gallery-video):not(.detail > *) :is(img, video) {
   /* max-block-size: 200px; */
   overflow: hidden;
   block-size: 100%;
   inline-size: 100%;
   object-fit: cover;
+  object-position: top center;
   position: absolute;
   inset: 0;
   cursor: zoom-in;
@@ -99,6 +99,7 @@ figcaption {
   left: 0;
   right: 0;
   color: #fff; */
+  display: none;
   align-self: start;
   color: #202020;
   background: linear-gradient(#fff, #fff) padding-box,
@@ -187,7 +188,7 @@ figcaption ul {
   transition: background 0.3s linear;
 }
 
-.detail .gallery-image {
+.detail :is(.gallery-image, .gallery-video) {
   padding: 5vmin;
   inline-size: 100%;
   block-size: 100%;
@@ -199,12 +200,12 @@ figcaption ul {
 }
 
 @media (min-width: 1140px) {
-  .detail .gallery-image {
+  .detail :is(.gallery-image, .gallery-video) {
     grid-template-columns: 1fr fit-content(500px);
   }
 }
 
-.detail img {
+.detail :is(img, video) {
   inline-size: 100%;
   block-size: 100%;
   max-inline-size: 100%;
@@ -214,6 +215,7 @@ figcaption ul {
 }
 
 .detail figcaption {
+  display: block;
   opacity: 1;
 }
 
@@ -222,11 +224,11 @@ figcaption ul {
   pointer-events: auto;
 }
 
-[data-state="detail"] .detail .gallery-image {
+[data-state="detail"] .detail :is(.gallery-image, .gallery-video) {
   opacity: 1;
 }
 
-[data-state="gallery"] .detail .gallery-image {
+[data-state="gallery"] .detail :is(.gallery-image, .gallery-video) {
   opacity: 0;
   transition: none;
 }
