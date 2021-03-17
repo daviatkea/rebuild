@@ -110,7 +110,7 @@ figcaption {
     repeating-conic-gradient(gainsboro 0 0.25turn, #fff 0 0.5turn) border-box 0
       0 / 2rem 2rem round; */
   padding: 1rem;
-  border: solid transparent;
+  border: 0 solid transparent;
   border-block-start-width: 2rem;
   text-align: start;
   transition: opacity 0.4s linear;
