@@ -125,7 +125,7 @@ figcaption {
     0 180px 80px hsl(200 95% 3% / 0.13);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1140px) {
   figcaption {
     margin: 2rem 2rem -2rem -2rem;
     font-size: 1.25rem;
@@ -191,7 +191,7 @@ figcaption {
   place-content: center;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1140px) {
   .detail .gallery-image {
     grid-template-columns: 1fr fit-content(500px);
   }
