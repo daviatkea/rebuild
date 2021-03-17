@@ -58,10 +58,10 @@ elImages.forEach((figure) => {
     function revert() {
       flipImages(elCloneImage, elImage, () => {
         elApp.dataset.state = "gallery";
-        elDetail.removeEventListener("click", revert);
+        elCloneImage.removeEventListener("click", revert);
       });
     }
 
-    elDetail.addEventListener("click", revert);
+    elCloneImage.addEventListener("click", revert);
   });
 });
