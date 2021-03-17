@@ -94,6 +94,7 @@ section ol {
   object-fit: cover;
   position: absolute;
   inset: 0;
+  cursor: zoom-in;
 }
 
 figcaption {
