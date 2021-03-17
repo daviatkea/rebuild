@@ -60,10 +60,10 @@ function handler(elems, type) {
         elApp.dataset.state = "detail";
       });
 
-      elCloneImage.play();
+      if (type === "video") elCloneImage.play();
 
       function revert() {
-        elCloneImage.pause();
+        if (type === "video") elCloneImage.pause();
         flipImages(elCloneImage, elImage, () => {
           elApp.dataset.state = "gallery";
           elCloneImage.removeEventListener("click", revert);
