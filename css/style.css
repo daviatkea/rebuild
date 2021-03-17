@@ -29,10 +29,6 @@ img {
   box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%), 0 2px 4px 0 rgb(0 0 0 / 10%);
 }
 
-p + p {
-  margin-block-start: 1rem;
-}
-
 #app {
   grid-column: 2 / -2;
   margin-block: clamp(2rem, 6vw, 6rem);
@@ -43,9 +39,9 @@ p + p {
 section {
   display: flex;
   flex-flow: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   border: 2px dashed #fb28a8;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 8px;
 }
 
@@ -83,11 +79,11 @@ section ol {
   block-size: 0;
   display: grid;
   inline-size: 100%;
-  padding-top: 100%;
+  padding-top: 80%;
 }
 
 .gallery-image:not(.detail > *) img {
-  max-block-size: 200px;
+  /* max-block-size: 200px; */
   overflow: hidden;
   block-size: 100%;
   inline-size: 100%;
@@ -125,10 +121,14 @@ figcaption {
     0 180px 80px hsl(200 95% 3% / 0.13);
 }
 
+figcaption > :is(p, h4) + :not(ul) {
+  margin-block-start: 1rem;
+}
+
 @media (min-width: 1140px) {
   figcaption {
     margin: 2rem 2rem -2rem -2rem;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   figcaption h3 {
