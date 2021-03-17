@@ -60,10 +60,13 @@ function handler(elems, type) {
         elApp.dataset.state = "detail";
       });
 
+      document.body.classList.add("overflow-hidden");
+
       if (type === "video") elCloneImage.play();
 
       function revert() {
         if (type === "video") elCloneImage.pause();
+        document.body.classList.remove("overflow-hidden");
         flipImages(elCloneImage, elImage, () => {
           elApp.dataset.state = "gallery";
           elCloneImage.removeEventListener("click", revert);
