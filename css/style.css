@@ -99,6 +99,7 @@ figcaption {
   left: 0;
   right: 0;
   color: #fff; */
+  align-self: start;
   color: #202020;
   background: linear-gradient(#fff, #fff) padding-box,
     repeating-linear-gradient(-45deg, #5000ca3e 0 2px, transparent 0 8px)
