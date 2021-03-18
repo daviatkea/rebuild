@@ -112,9 +112,14 @@ figcaption {
     repeating-linear-gradient(45deg, #fb28a83e 0 2px, transparent 0 8px)
       border-box,
     #fff;
-  /* background: linear-gradient(#fff, #fff) padding-box,
-    repeating-conic-gradient(gainsboro 0 0.25turn, #fff 0 0.5turn) border-box 0
-      0 / 2rem 2rem round; */
+  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))
+      padding-box padding-box,
+    repeating-conic-gradient(
+        from -45deg,
+        rgb(80, 0, 202) 0deg 0.25turn,
+        rgb(251, 40, 168) 0deg 0.5turn
+      )
+      1rem 0rem / 2rem 2rem round border-box border-box;
   padding: 1rem 1.5rem 1.5rem;
   border: 0 solid transparent;
   border-block-start-width: 2rem;
@@ -126,6 +131,7 @@ figcaption {
     0 12px 6.5px hsl(200 95% 3% / 0.053), 0 22.5px 13px hsl(200 95% 3% / 0.065),
     0 40.2px 24px hsl(200 95% 3% / 0.077), 0 75.2px 44px hsl(200 95% 3% / 0.093),
     0 180px 80px hsl(200 95% 3% / 0.13);
+  transform: translate3d(100%, 0, 0);
 }
 
 figcaption > :is(p, h4) + :not(ul) {
@@ -222,6 +228,13 @@ figcaption ul {
 .detail figcaption {
   display: block;
   opacity: 1;
+  animation: reveal 0.4s 0.15s cubic-bezier(0.84, 0, 0.2, 1) both;
+}
+
+@keyframes reveal {
+  to {
+    transform: none;
+  }
 }
 
 [data-state="detail"] .detail {
