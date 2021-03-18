@@ -263,7 +263,7 @@ section ol {
   display: list-item;
 }
 
-:is(.gallery-image, .gallery-video) {
+[class^="gallery-"] {
   will-change: transform;
   block-size: 0;
   display: grid;
@@ -271,7 +271,7 @@ section ol {
   padding-top: 80%;
 }
 
-:is(.gallery-image, .gallery-video):not(.detail > *) :is(img, video) {
+[class^="gallery-"]:not(.detail > *) :is(img, video) {
   /* max-block-size: 200px; */
   overflow: hidden;
   block-size: 100%;
@@ -325,11 +325,6 @@ figcaption {
 
 figcaption > :is(p, h3, h4) + * {
   margin-block-start: 1rem;
-}
-
-figcaption ul {
-  list-style-type: "🧩 ";
-  padding-inline-start: 1.2rem;
 }
 
 figcaption h3::after {
@@ -392,7 +387,7 @@ figcaption h3::after {
   transition: background 0.3s linear;
 }
 
-.detail :is(.gallery-image, .gallery-video) {
+.detail [class^="gallery-"] {
   /* padding: 5vmin; */
   padding: 0;
   inline-size: 100%;
@@ -407,7 +402,7 @@ figcaption h3::after {
 }
 
 @media (min-width: 1140px) {
-  .detail :is(.gallery-image, .gallery-video) {
+  .detail [class^="gallery-"] {
     /* grid-template-columns: 1fr fit-content(500px); */
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 100vh;

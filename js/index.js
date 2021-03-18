@@ -1,13 +1,13 @@
 console.clear();
 
-const elApp = document.querySelector("#app");
+const app = document.querySelector("#app");
 
-const elImages = Array.from(document.querySelectorAll(".gallery-image"));
-const elVideos = Array.from(document.querySelectorAll(".gallery-video"));
+const tasks = Array.from(document.querySelectorAll("[class^='gallery-']"));
+// const elVideos = Array.from(document.querySelectorAll(".gallery-video"));
 
-const elDetail = document.querySelector(".detail");
+const detail = document.querySelector(".detail");
 
-function flipImages(firstEl, lastEl, change) {
+function flipTasks(firstEl, lastEl, change) {
   const firstRect = firstEl.getBoundingClientRect();
 
   const lastRect = lastEl.getBoundingClientRect();
@@ -41,42 +41,44 @@ function flipImages(firstEl, lastEl, change) {
   };
 }
 
-handler(elImages, "img");
-handler(elVideos, "video");
+// handler(elImages, "img");
+// handler(elVideos, "video");
 
-function handler(elems, type) {
-  elems.forEach((el) => {
-    el.addEventListener("click", () => {
-      const elImage = el.querySelector(type);
+// function handler(elems, type) {
+tasks.forEach((el) => {
+  el.addEventListener("click", () => {
+    const taskRef = el.querySelector(":scope > :first-child");
 
-      elDetail.innerHTML = "";
+    detail.innerHTML = "";
 
-      const elClone = el.cloneNode(true);
-      elDetail.appendChild(elClone);
+    const taskClone = el.cloneNode(true);
+    detail.appendChild(taskClone);
 
-      const elCloneImage = elClone.querySelector(type);
+    const taskRefClone = taskClone.querySelector(":scope > :first-child");
 
-      flipImages(elImage, elCloneImage, () => {
-        elApp.dataset.state = "detail";
-      });
-
-      document.body.classList.add("overflow-hidden");
-
-      if (type === "video") elCloneImage.play();
-
-      function revert() {
-        if (type === "video") elCloneImage.pause();
-        document.body.classList.remove("overflow-hidden");
-        flipImages(elCloneImage, elImage, () => {
-          elApp.dataset.state = "gallery";
-          elCloneImage.removeEventListener("click", revert);
-        });
-      }
-
-      elCloneImage.addEventListener("click", revert);
+    flipTasks(taskRef, taskRefClone, () => {
+      app.dataset.state = "detail";
     });
+
+    document.body.classList.add("overflow-hidden");
+
+    // if (type === "video") elCloneImage.play();
+    if (taskRefClone.nodeName == "VIDEO") taskRefClone.play();
+
+    function revert() {
+      // if (type === "video") elCloneImage.pause();
+      if (taskRefClone.nodeName == "VIDEO") taskRefClone.pause();
+      document.body.classList.remove("overflow-hidden");
+      flipTasks(taskRefClone, taskRef, () => {
+        app.dataset.state = "gallery";
+        taskRefClone.removeEventListener("click", revert);
+      });
+    }
+
+    taskRefClone.addEventListener("click", revert);
   });
-}
+});
+// }
 
 // elImages.forEach((figure) => {
 //   figure.addEventListener("click", () => {
