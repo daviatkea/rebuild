@@ -1,23 +1,63 @@
+@font-face {
+  font-family: "Wotfard";
+  src: url("./../fonts/wotfard-semibold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+  ascent-override: 100%;
+  descent-override: 25%;
+}
+@font-face {
+  font-family: "Wotfard";
+  src: url("./../fonts/wotfard-medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  ascent-override: 100%;
+  descent-override: 25%;
+}
+@font-face {
+  font-family: "Wotfard";
+  src: url("./../fonts/wotfard-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  ascent-override: 100%;
+  descent-override: 25%;
+}
+
 * {
+  --max-screen-size: var(--screen-max, 1200);
+  --min-screen-size: var(--screen-min, 375);
+  --responsive: (
+    (var(--min-font) * 1px) + (var(--max-font) - var(--min-font)) *
+      (
+        (100vw - (var(--min-screen-size) * 1px)) /
+          (var(--max-screen-size) - var(--min-screen-size))
+      )
+  );
   box-sizing: border-box;
   position: relative;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+html {
+  block-size: 100%;
 }
 
 body {
-  background: hsl(240 50% 96%);
+  min-block-size: 100%;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  color: #212529;
+  /* background: hsl(240 50% 96%); */
   display: grid;
   grid: auto / minmax(1rem, 1fr) minmax(auto, min(100%, 1200px)) minmax(
       1rem,
       1fr
     );
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2418%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient2419)'%3e%3c/rect%3e%3cpath d='M1440 0L1424.96 0L1440 271.4z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1424.96 0L1440 271.4L1440 374.90999999999997L1143.8200000000002 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M1143.82 0L1440 374.90999999999997L1440 463.26L1101.3 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M1101.3 0L1440 463.26L1440 525.38L956.29 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L295.09 560L0 525.72z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 525.72L295.09 560L341.12 560L0 279.02000000000004z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 279.02L341.12 560L967.6 560L0 196.42999999999998z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 196.42999999999995L967.6 560L1115.04 560L0 114.16999999999994z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2418'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2419'%3e%3cstop stop-color='rgba(44%2c 32%2c 59%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(44%2c 32%2c 59%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e")
+    50% / cover no-repeat fixed;
 }
 
 .overflow-hidden {
@@ -33,9 +73,155 @@ body {
   box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%), 0 2px 4px 0 rgb(0 0 0 / 10%);
 }
 
+:is(h1, h2) {
+  line-height: 1.25;
+}
+
+h2 {
+  color: hsl(324 96% 85%);
+  text-decoration: #fb28a8 underline 2px;
+  text-underline-offset: 0.35rem;
+  text-shadow: 0 0 20px hsl(324 96% 57% / 80%);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.4px hsl(324deg 96% 85%);
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  hyphens: auto;
+  font-family: "Wotfard";
+  font-weight: 500;
+  --min-font: 22;
+  --max-font: 36;
+  --screen-max: 1200;
+  --screen-min: 375;
+  font-size: clamp(
+    var(--min-font) * 1px,
+    var(--responsive),
+    var(--max-font) * 1px
+  );
+}
+
+h3 {
+  font-family: "Wotfard";
+  font-weight: 400;
+  line-height: 1;
+}
+
+p {
+  font-family: "Wotfard";
+  font-weight: 300;
+  font-size: 18px;
+  --min-font: 16;
+  --max-font: 18;
+  --screen-max: 1200;
+  --screen-min: 375;
+  font-size: clamp(
+    var(--min-font) * 1px,
+    var(--responsive),
+    var(--max-font) * 1px
+  );
+}
+
+a:any-link {
+  color: #463866;
+}
+
+.main-header,
+footer {
+  grid-column: 1 / -1;
+  display: grid;
+  grid: auto / minmax(1rem, 1fr) minmax(auto, 1200px) minmax(1rem, 1fr);
+  gap: 3rem 0;
+  text-align: center;
+  margin-block: 3rem;
+}
+
+.main-header h1 {
+  background: #2a2139;
+  will-change: transform;
+  padding-inline: 1rem;
+  border-radius: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 4rem;
+  --min-font: 40;
+  --max-font: 64;
+  font-size: clamp(
+    var(--min-font) * 1px,
+    var(--responsive),
+    var(--max-font) * 1px
+  );
+  cursor: pointer;
+  justify-self: center;
+}
+
+.stroke-text {
+  --c: #72f1b8;
+  color: var(--c, #72f1b8);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px currentColor;
+  overflow: hidden;
+  max-width: 3.1ch;
+  display: inline-block;
+  vertical-align: bottom;
+  text-decoration: underline var(--c) 4px;
+  text-underline-offset: 4px;
+  transition: 0.3s;
+  will-change: max-width;
+  contain: paint;
+}
+
+/*h1:hover span.stroke-text {*/
+.toggled {
+  --c: #fb28a8;
+  max-width: 1.05ch;
+}
+
+:is(.main-header, footer) > * {
+  grid-column: 2 / -2;
+  color: #fb28a8;
+  font-weight: 700;
+}
+
+.hints {
+  padding: 0.25rem 0.75rem;
+  padding-inline-start: 1.25rem;
+  border-radius: 6px;
+  border: 2px solid hsl(153 30% 80%);
+  display: inline-grid;
+  font-family: "Wotfard";
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.hints::before {
+  content: "Hints";
+  margin-block: -0.7rem 0;
+  background: #efebf9;
+  padding-inline: 0.25rem;
+  margin-inline-start: -0.25rem;
+  justify-self: start;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: hsl(153 20% 40%);
+}
+
+.hints li::marker {
+  content: "•\00a0";
+  color: var(--m, currentColor);
+}
+
+[data-prop] {
+  --m: hsl(153 70% 50%);
+}
+
+[data-unit] {
+  --m: rgb(249, 42, 173);
+}
+
 #app {
   grid-column: 2 / -2;
-  margin-block: clamp(2rem, 6vw, 6rem);
+  /* margin-block-start: clamp(2rem, 6vw, 6rem); */
   display: grid;
   gap: 4rem 1rem;
 }
@@ -105,14 +291,14 @@ figcaption {
   color: #fff; */
   display: none;
   /* align-self: start; */
-  color: #202020;
+  color: #2a2139;
   background: linear-gradient(#fff, #fff) padding-box,
     repeating-linear-gradient(-45deg, #5000ca3e 0 2px, transparent 0 8px)
       border-box,
     repeating-linear-gradient(45deg, #fb28a83e 0 2px, transparent 0 8px)
       border-box,
     #fff;
-  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))
+  background: linear-gradient(hsl(266, 20%, 88%), hsl(266, 20%, 88%))
       padding-box padding-box,
     repeating-conic-gradient(
         from -45deg,
@@ -120,9 +306,11 @@ figcaption {
         rgb(251, 40, 168) 0deg 0.5turn
       )
       1rem 0rem / 2rem 2rem round border-box border-box;
-  padding: 1rem 1.5rem 1.5rem;
-  border: 0 solid transparent;
-  border-block-start-width: 2rem;
+  background: hsl(258 50% 95%);
+  padding: 3rem 1.5rem 1.5rem;
+  border: 0 solid #5000ca;
+  border-block-start-width: 1rem;
+  border-image: linear-gradient(to right, #5000ca, #72f1b8) 1;
   text-align: start;
   transition: opacity 0.4s linear;
   opacity: 0;
@@ -132,15 +320,24 @@ figcaption {
     0 40.2px 24px hsl(200 95% 3% / 0.077), 0 75.2px 44px hsl(200 95% 3% / 0.093),
     0 180px 80px hsl(200 95% 3% / 0.13);
   transform: translate3d(100%, 0, 0);
+  overflow-y: auto;
 }
 
-figcaption > :is(p, h4) + :not(ul) {
+figcaption > :is(p, h3, h4) + * {
   margin-block-start: 1rem;
 }
 
 figcaption ul {
   list-style-type: "🧩 ";
   padding-inline-start: 1.2rem;
+}
+
+figcaption h3::after {
+  content: "";
+  block-size: 3px;
+  inline-size: 0.9ch;
+  background: #5000ca;
+  display: block;
 }
 
 @media (min-width: 1140px) {
@@ -150,8 +347,7 @@ figcaption ul {
   }
 
   figcaption h3 {
-    font-size: 3rem;
-    line-height: 1.25;
+    font-size: 2.25rem;
   }
 }
 
@@ -171,6 +367,7 @@ figcaption ul {
   inset-block-start: -0.9rem;
   inset-inline-start: -0.9rem;
   z-index: 2;
+  pointer-events: none;
   background: #72f1b8;
   color: #3a243f;
   font-weight: 900;
@@ -204,7 +401,9 @@ figcaption ul {
   align-items: center;
   justify-content: center; */
   display: grid;
-  place-content: center;
+  /* place-content: center; */
+  grid-template-columns: 1fr;
+  grid-template-rows: 50%;
 }
 
 @media (min-width: 1140px) {

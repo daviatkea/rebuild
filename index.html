@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div id="app" data-state="gallery">
+    <header class="main-header">
+      <h1 aria-label="CSS Exercises">
+        <span class="stroke-text">CSS</span>Rebuild
+      </h1>
+    </header>
+    <main id="app" data-state="gallery">
       <section>
         <header>
           <h2>Layout exercises</h2>
@@ -20,22 +25,21 @@
             <figure class="gallery-image">
               <img src="img/ex1.webp" alt="" />
               <figcaption>
-                <h3>Exercise</h3>
+                <h3>Sloped/slanted edge</h3>
                 <p>
                   In this exercise your job is to create a sloped edge slicing
                   through a card component containing some text content and an
-                  image. The angle of the sloped edge must be consistent at all
-                  screen sizes and its center point must intersect with that of
+                  image. The angle of the sloped edge <em>must</em> be consistent at all
+                  screen sizes and its center point <em>must</em> intersect with that of
                   the card.
                 </p>
                 <p>
                   The content and the image is not important for this exercise.
                 </p>
-                <h4>Hints:</h4>
-                <ul>
-                  <li>
+                <ul class="hints">
+                  <li data-prop>
                     <a href="https://bennettfeely.com/clippy/" target="_blank"
-                      >clip-path</a
+                      >clip-path maker</a
                     >
                   </li>
                 </ul>
@@ -272,7 +276,11 @@
       <div class="detail">
         <!--   cloned figure/image goes here!   -->
       </div>
-    </div>
+    </main>
+
+    <footer>
+      <small>© MMD 2021</small>
+    </footer>
 
     <script src="js/index.js"></script>
   </body>
