@@ -183,10 +183,11 @@ footer {
 }
 
 .hints {
+  position: relative;
   padding: 0.25rem 0.75rem;
   padding-inline-start: 1.25rem;
   border-radius: 6px;
-  border: 2px solid hsl(153 30% 80%);
+  /* border: 2px solid hsl(153 30% 80%); */
   display: inline-grid;
   font-family: "Wotfard";
   font-weight: 300;
@@ -204,6 +205,25 @@ footer {
   font-size: 0.7em;
   font-weight: 600;
   color: hsl(153 20% 40%);
+}
+
+.hints::after {
+  content: "";
+  border-radius: inherit;
+  border: 2px solid hsl(153 30% 80%);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    100% 100%,
+    100% 0,
+    3.6rem 0,
+    3.6rem 3px,
+    1rem 3px,
+    1rem 0
+  );
 }
 
 .hints li::marker {
