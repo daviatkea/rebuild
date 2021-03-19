@@ -3,7 +3,7 @@
   src: url("./../fonts/blueprint.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: "Wotfard";
@@ -164,13 +164,38 @@ footer {
     var(--max-font) * 1px
   );
   justify-self: center;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
 }
 
 .stroke-text {
   --c: #72f1b8;
   color: var(--c, #72f1b8);
-  text-decoration: underline var(--c) 4px;
+  /* text-decoration: underline var(--c) 4px;
+  text-underline-offset: 4px; */
+}
+
+.span-grid {
+  display: inline-grid;
+  line-height: 0.75;
+}
+
+.span-grid b:nth-of-type(1) {
+  grid-row: 1;
+  margin-block-start: 0.05rem;
+}
+.span-grid b:is(:nth-of-type(1), :nth-of-type(2)) {
+  font-size: 0.45em;
+  letter-spacing: 0;
+}
+.span-grid b:nth-of-type(2) {
+  text-decoration: underline currentColor 4px;
   text-underline-offset: 4px;
+}
+.span-grid b:nth-of-type(3) {
+  grid-row: 1 / span 2;
+  margin-inline-start: -0.3rem;
 }
 
 /*h1:hover span.stroke-text {*/
