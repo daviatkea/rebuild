@@ -217,6 +217,7 @@ footer {
   border-radius: 6px;
   /* border: 2px solid hsl(153 30% 80%); */
   display: inline-grid;
+  align-self: flex-start;
   font-family: "Wotfard";
   font-weight: 300;
   font-size: 1rem;
@@ -391,8 +392,12 @@ figcaption {
   overflow-y: auto;
 }
 
-figcaption > :is(p, h3, h4) + * {
+figcaption > :is(p, h3, h4, ul) + * {
   margin-block-start: 1rem;
+}
+
+figcaption > :nth-last-child(2) {
+  margin-block-end: auto;
 }
 
 figcaption h3::after {
@@ -401,6 +406,18 @@ figcaption h3::after {
   inline-size: 0.9ch;
   background: #5000ca;
   display: block;
+}
+
+figcaption section {
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+figcaption .buttons {
+  display: flex;
+  flex-flow: wrap;
+  gap: 0.5rem;
 }
 
 @media (min-width: 1140px) {
@@ -488,7 +505,8 @@ figcaption h3::after {
 }
 
 .detail figcaption {
-  display: block;
+  display: flex;
+  flex-flow: column;
   opacity: 1;
   animation: reveal 0.4s 0.15s cubic-bezier(0.84, 0, 0.2, 1) both;
 }
