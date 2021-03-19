@@ -165,7 +165,7 @@ footer {
   );
   justify-self: center;
   display: flex;
-  gap: 0.7rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
