@@ -193,6 +193,7 @@ footer {
   font-family: "Wotfard";
   font-weight: 300;
   font-size: 1rem;
+  z-index: 0;
 }
 
 .hints::before {
