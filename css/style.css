@@ -429,7 +429,7 @@ figcaption .buttons {
   border-radius: 0.3em;
   border: 1px solid currentColor;
   font-size: 0.9em;
-  background: #72f1b8;
+  background: transparent;
   cursor: pointer;
 }
 
