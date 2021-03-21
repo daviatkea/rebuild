@@ -413,6 +413,9 @@ figcaption section {
   gap: 1rem;
   align-items: center;
   justify-content: center;
+  inline-size: -moz-fit-content;
+  inline-size: fit-content;
+  margin-inline: auto;
   border: 0;
   background: hsl(264 15% 94%);
   font-size: 0.9em;
