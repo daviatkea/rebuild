@@ -414,6 +414,7 @@ figcaption section {
   align-items: center;
   border: 0;
   background: hsl(264 15% 94%);
+  font-size: 0.9em;
 }
 
 figcaption h4 {
