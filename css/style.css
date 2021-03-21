@@ -420,6 +420,19 @@ figcaption .buttons {
   gap: 0.5rem;
 }
 
+.buttons :is(button, a:any-link) {
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  background: conic-gradient(from 0.5turn at center left, lime, cyan);
+  font-weight: 400;
+  font-family: Wotfard;
+  text-decoration: none;
+  color: #2a2139;
+  border-radius: 0.15em 0.3em 0.3em 0.15em;
+  border-inline-start: 3px solid #5000ca;
+  font-size: 0.9em;
+}
+
 @media (min-width: 1140px) {
   figcaption {
     /* margin: 2rem 2rem -2rem -2rem; */
