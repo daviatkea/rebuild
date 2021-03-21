@@ -412,6 +412,12 @@ figcaption section {
   padding: 1rem;
   gap: 1rem;
   align-items: center;
+  border: 0;
+  background: hsl(0deg 0% 94%);
+}
+
+figcaption h4 {
+  color: #5000ca;
 }
 
 figcaption .buttons {
