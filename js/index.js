@@ -7,14 +7,6 @@ const tasks = Array.from(document.querySelectorAll("[class^='gallery-']"));
 
 const detail = document.querySelector(".detail");
 
-const copyMe = document.querySelectorAll("[data-copy]");
-
-copyMe.forEach((c) => {
-  c.addEventListener("click", () => {
-    navigator.clipboard.writeText(c.textContent);
-  });
-});
-
 function flipTasks(firstEl, lastEl, change) {
   const firstRect = firstEl.getBoundingClientRect();
 
@@ -68,6 +60,20 @@ tasks.forEach((el) => {
       app.dataset.state = "detail";
     });
 
+    const copyEl = taskClone.querySelector("[data-copy]");
+
+    copyEl.addEventListener("click", copyText);
+
+    function copyText(e) {
+      const el = e.target;
+      el.dataset.copied = "copied";
+      navigator.clipboard.writeText(el.dataset.copy);
+
+      el.addEventListener("animationend", () => {
+        delete el.dataset.copied;
+      });
+    }
+
     document.body.classList.add("overflow-hidden");
 
     // if (type === "video") elCloneImage.play();
@@ -77,6 +83,7 @@ tasks.forEach((el) => {
       // if (type === "video") elCloneImage.pause();
       if (taskRefClone.nodeName == "VIDEO") taskRefClone.pause();
       document.body.classList.remove("overflow-hidden");
+      copyEl.removeEventListener("click", copyText);
       flipTasks(taskRefClone, taskRef, () => {
         app.dataset.state = "gallery";
         taskRefClone.removeEventListener("click", revert);

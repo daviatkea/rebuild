@@ -444,6 +444,14 @@ figcaption .buttons {
   cursor: pointer;
 }
 
+.buttons :is(button, a:any-link):active {
+  background: #fb28a833;
+}
+
+.buttons :is(button, a:any-link):is(:active, :hover) {
+  border-color: #fb28a8;
+}
+
 @media (min-width: 1140px) {
   figcaption {
     /* margin: 2rem 2rem -2rem -2rem; */
@@ -553,4 +561,27 @@ figcaption .buttons {
 [data-state="gallery"] .detail :is(.gallery-image, .gallery-video) {
   opacity: 0;
   transition: none;
+}
+
+[data-copied]::after {
+  content: attr(data-copied);
+  position: absolute;
+  inset: 0;
+  color: #fb28a8;
+  font: inherit;
+  font-weight: 400;
+  text-shadow: 0 2px 6px #fff;
+  opacity: 0;
+  animation: copied 1s cubic-bezier(0.84, 0, 0.2, 1);
+}
+
+@keyframes copied {
+  25% {
+    opacity: 1;
+    transform: translateY(-1.5rem);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
 }
