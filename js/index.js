@@ -7,6 +7,14 @@ const tasks = Array.from(document.querySelectorAll("[class^='gallery-']"));
 
 const detail = document.querySelector(".detail");
 
+const copyMe = document.querySelectorAll("[data-copy]");
+
+copyMe.forEach((c) => {
+  c.addEventListener("click", () => {
+    navigator.clipboard.writeText(c.textContent);
+  });
+});
+
 function flipTasks(firstEl, lastEl, change) {
   const firstRect = firstEl.getBoundingClientRect();
 
