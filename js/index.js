@@ -62,17 +62,22 @@ tasks.forEach((el) => {
 
     const copyEl = taskClone.querySelector("[data-copy]");
 
-    copyEl.addEventListener("click", copyText);
+    function githubBtn() {
+      if (!copyEl) return;
 
-    function copyText(e) {
-      const el = e.target;
-      el.dataset.copied = "copied";
-      navigator.clipboard.writeText(el.dataset.copy);
+      copyEl.addEventListener("click", copyText, { once: true });
 
-      el.addEventListener("animationend", () => {
-        delete el.dataset.copied;
-      });
+      function copyText(e) {
+        const el = e.target;
+        el.dataset.copied = "copied";
+        navigator.clipboard.writeText(el.dataset.copy);
+
+        el.addEventListener("animationend", () => {
+          delete el.dataset.copied;
+        });
+      }
     }
+    githubBtn();
 
     document.body.classList.add("overflow-hidden");
 
@@ -83,7 +88,7 @@ tasks.forEach((el) => {
       // if (type === "video") elCloneImage.pause();
       if (taskRefClone.nodeName == "VIDEO") taskRefClone.pause();
       document.body.classList.remove("overflow-hidden");
-      copyEl.removeEventListener("click", copyText);
+      // copyEl.removeEventListener("click", copyText);
       flipTasks(taskRefClone, taskRef, () => {
         app.dataset.state = "gallery";
         taskRefClone.removeEventListener("click", revert);
