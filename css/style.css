@@ -118,7 +118,8 @@ h3 {
   line-height: 1;
 }
 
-p {
+p,
+ul {
   font-family: "Wotfard";
   font-weight: 300;
   font-size: 18px;
@@ -135,6 +136,10 @@ p {
 
 a:any-link {
   color: #463866;
+}
+
+ul {
+  padding-inline-start: 1.2em;
 }
 
 .main-header,
